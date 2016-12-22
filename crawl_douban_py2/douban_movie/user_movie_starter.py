@@ -20,8 +20,7 @@ def run(userid):
   start run crawl user-movies  
   @param userid  
   """
-  # timeout
-  timeout = 60 * 2
+  time.sleep(random.choice(range(10)))
   
   # collect
   opener = spider_nologin()
@@ -35,7 +34,6 @@ def run(userid):
   while url_next:
     time.sleep(random.random())
     opener = spider_nologin()
-    # body = opener.open(url_next, None, timeout).read()
     body = spider_open(opener, url_next)
     soup = BeautifulSoup(body, 'html.parser')
     user_movies, movies = get_movie(soup)

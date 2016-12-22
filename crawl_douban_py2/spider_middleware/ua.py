@@ -8,9 +8,10 @@ __author__ = 'soonfy'
 # modules
 import os
 import random
+import time
 
 import urllib2 as request
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 from util.fs import file_ready
 
@@ -32,6 +33,27 @@ def spider_origin():
   opener.addheaders = headers
   return opener
 
+def origin_open(opener, url, timeout = 60 * 2, max = 10):
+  """
+  open url  
+  @param opener  
+  @param url  
+  @param timeout  
+  @param max - max times reopen  
+  @return body/''  
+  """
+  fail = 1
+  while True:
+    try:
+      if fail > max:
+        return ''
+      body = opener.open(url, None, timeout).read()
+      return body
+    except:
+      print '=== time %s error, rest 10s ===' % fail
+      fail += 1
+      time.sleep(10)
+
 def get_ua():
   """
   get ua list from web  
@@ -41,7 +63,7 @@ def get_ua():
   """
   url_ua = 'http://www.useragentstring.com/pages/useragentstring.php?name=All'
   opener = spider_origin()
-  body = opener.open(url_ua).read()
+  body = origin_open(opener, url_ua)
   soup = BeautifulSoup(body, 'html.parser')
   tag_lis = soup.find_all('li')
   uas = []
@@ -50,7 +72,7 @@ def get_ua():
     uas.append(tag.string)
   return uas
 
-def write_ua(filepath = r'./crawl_douban/spider_middleware/ua.txt'):
+def write_ua(filepath = r'./data/spider/ua.txt'):
   """
   write ua list to file  
   @param filepath  
@@ -62,7 +84,7 @@ def write_ua(filepath = r'./crawl_douban/spider_middleware/ua.txt'):
     file_obj.write(ua_str)
     file_obj.close()
 
-def read_ua(filepath = r'./crawl_douban/spider_middleware/ua.txt'):
+def read_ua(filepath = r'./data/spider/ua.txt'):
   """
   read ua from file  
   @param filepath  

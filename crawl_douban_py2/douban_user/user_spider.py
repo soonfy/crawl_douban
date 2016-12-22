@@ -8,7 +8,7 @@ __author__ = 'soonfy'
 # modules
 from bs4 import BeautifulSoup
 
-from spider_middleware import spider_open
+from spider_middleware.douban_spider import spider_open
 
 class UserSpider(object):
   """

@@ -17,11 +17,13 @@ def file_ready(filepath):
   try:
     if os.path.exists(os.path.split(filepath)[0]):
       if os.path.isfile(filepath):
+        pass
         # print('file exists...')
       else:
+        pass
         # print('no file...')
     else:
-      os.mkdirs(os.path.split(filepath)[0])
+      os.makedirs(os.path.split(filepath)[0])
       print('no file dir...')
     return True
   except Exception as e:

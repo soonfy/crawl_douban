@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-'parse user contacts.'
+'parse user contacts and write file.'
 
 __author__ = 'soonfy'
 
@@ -31,28 +31,30 @@ def get_users(soup, relation):
       userids.append(m.group(1))
   return users, userids
 
-def write_users(users, userid, user_dir = r'./crawl_douban/douban_user/users'):
+def write_users(users, userid, user_dir = r'./data/douban_users'):
   """
   write users into file  
   @param users  
   @param userid  
   @param user_dir  
   """
-  user_file = r'%s/users/%s.txt' % (user_dir, userid)
+  users = set(users)
+  user_file = r'%s/relations/%s.txt' % (user_dir, userid)
   if file_ready(user_file):
-    user_str = '\r\n'.join(users) + '\r\n'
+    user_str = '\n'.join(users) + '\n'
     file_obj = open(user_file, 'a')
     file_obj.write(user_str)
     file_obj.close()
 
-def write_userids(userids, userid_file = r'./crawl_douban/douban_user/users.txt'):
+def write_userids(userids, userid_file = r'./data/douban_users/userids.txt'):
   """
   write userids into file  
   @param userids  
   @param userid_file  
   """
+  print userids
   if file_ready(userid_file):
-    user_str = '\r\n'.join(userids) + '\r\n'
-    file_obj = open(user_file, 'a')
+    userid_str = '\n'.join(userids) + '\n'
+    file_obj = open(userid_file, 'a')
     file_obj.write(userid_str)
     file_obj.close()

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-'parse douban page data.'
+'parse douban page data and write file.'
 
 __author__ = 'soonfy'
 
@@ -64,21 +64,22 @@ def write_user_movies(user_movies, userid):
   @param user_movies  
   @param userid  
   """
-  user_movie_file = r'./crawl_douban/douban_movie/user_movies/%s.txt' % (userid)
+  user_movie_file = r'./data/douban_movies/user_movies/%s.txt' % (userid)
   if file_ready(user_movie_file):
-    user_movie_str = '\r\n'.join(user_movies) + '\r\n'
+    user_movie_str = '\n'.join(user_movies) + '\n'
     file_obj = open(user_movie_file, 'a')
     file_obj.write(user_movie_str)
     file_obj.close()
 
-def write_movies(movies, movie_file = r'./crawl_douban/douban_movie/movies.txt'):
+def write_movies(movies, movie_file = r'./data/douban_movies/movieurls.txt'):
   """
   write movies into file  
   @param movies  
   @param movie_file  
   """
+  print movies
   if file_ready(movie_file):
-    movie_str = '\r\n'.join(movies) + '\r\n'
+    movie_str = '\n'.join(movies) + '\n'
     file_obj = open(movie_file, 'a')
     file_obj.write(movie_str)
     file_obj.close()

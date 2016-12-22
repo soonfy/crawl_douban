@@ -12,6 +12,23 @@ import random
 from spider_middleware.douban_spider import spider_login
 from douban_user.user_spider import UserSpider
 from douban_user.crawl_user import get_users, write_users, write_userids
+from util.thread_sf import concurrence
+
+opener = spider_login()
+
+def con_crawl_users(userid):
+  time.sleep(random.choice(range(10)))
+  user = UserSpider(userid, opener)
+  time.sleep(random.random())
+  soup, relation = user.crawl_contacts()
+  users, userids = get_users(soup, relation)
+  write_users(users, userid)
+  write_userids(userids)
+  time.sleep(random.random())
+  soup, relation = user.crawl_rev_contacts()
+  users, userids = get_users(soup, relation)
+  write_users(users, userid)
+  write_userids(userids)
 
 def run(userid):
   """
@@ -19,7 +36,6 @@ def run(userid):
   @param userid  
   """
   alluser = []
-  opener = spider_login()
   write_userids([userid])
   user = UserSpider(userid, opener)
   time.sleep(random.random())
@@ -34,15 +50,4 @@ def run(userid):
   write_users(users, userid)
   write_userids(userids)
   alluser.extend(userids)
-  for userid in alluser:
-    user = UserSpider(userid, opener)
-    time.sleep(random.random())
-    soup, relation = user.crawl_contacts()
-    users, userids = get_users(soup, relation)
-    write_users(users, userid)
-    write_userids(userids)
-    time.sleep(random.random())
-    soup, relation = user.crawl_rev_contacts()
-    users, userids = get_users(soup, relation)
-    write_users(users, userid)
-    write_userids(userids)
+  concurrence(con_crawl_users, alluser)

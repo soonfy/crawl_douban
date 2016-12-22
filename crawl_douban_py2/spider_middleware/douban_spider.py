@@ -9,9 +9,11 @@ __author__ = 'soonfy'
 import os
 import time
 
-from urllib2 import request
-from urllib2.parse import urlencode
-from http import cookiejar
+import urllib2 as request
+import urllib
+import cookielib as cookiejar
+
+from util.fs import file_ready
 
 from spider_middleware.ua import read_ua
 
@@ -23,30 +25,33 @@ def spider_login():
   url_login = 'https://www.douban.com/accounts/login'
   param = {
     "source": 'None',
-    "redir": 'https://www.douban.com/people/67492098/contacts',
+    "redir": 'https://www.douban.com/people/rakikikikiki/contacts',
     "form_email": 'soonfy@163.com',
     "form_password": 'soonfy163',
-    "login": '登录'
+    "login": '登录',
+    "captcha-id": "bAM4qTVQGPx6S0g7yxcCm404:en",
+    "captcha-solution": "present"
   }
-  data = urlencode(param).encode('utf-8')
+  data = urllib.urlencode(param).encode('utf-8')
   headers = {
     'User-Agent': read_ua(),
     'Content-Type': 'application/x-www-form-urlencoded',
-    'Referer': 'https://www.douban.com/people/67492098/contacts',
+    'Referer': 'https://www.douban.com',
     'Host': 'www.douban.com',
     'Origin': 'https://www.douban.com'
   }
   req = request.Request(url_login, data, headers)
-  filename = os.path.abspath(r'./crawl_douban/spider_middleware/cookie.txt')
-  FileCookieJar= cookiejar.MozillaCookieJar(filename)
-  FileCookieJar.save()
-  handler = request.HTTPCookieProcessor(FileCookieJar)
-  opener = request.build_opener(handler)
-  request.install_opener(opener)
-  res = request.urlopen(req)
-  body = res.read().decode('utf-8')
-  FileCookieJar.save()
-  return opener
+  filename = os.path.abspath(r'./data/spider/cookie.txt')
+  if file_ready(filename):
+    FileCookieJar= cookiejar.MozillaCookieJar(filename)
+    FileCookieJar.save()
+    handler = request.HTTPCookieProcessor(FileCookieJar)
+    opener = request.build_opener(handler)
+    request.install_opener(opener)
+    res = request.urlopen(req)
+    body = res.read().decode('utf-8')
+    FileCookieJar.save()
+    return opener
 
 def spider_nologin():
   """
@@ -89,4 +94,4 @@ def spider_open(opener, url, timeout = 60 * 2, max = 10):
     except:
       fail += 1
       print '=== time %s error, rest 10s ===' % fail
-      time.sleep(1)
+      time.sleep(10)
