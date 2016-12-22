@@ -9,8 +9,8 @@ __author__ = 'soonfy'
 import os
 import random
 
-from urllib import request
-from bs4 import BeautifulSoup
+import urllib2 as request
+from BeautifulSoup import BeautifulSoup
 
 from util.fs import file_ready
 
@@ -30,7 +30,6 @@ def spider_origin():
     headers.append(elem)
   opener = request.build_opener()
   opener.addheaders = headers
-  print('origin spider success...')
   return opener
 
 def get_ua():
@@ -41,7 +40,6 @@ def get_ua():
     'http://www.useragentstring.com/pages/useragentstring.php?name=All'
   """
   url_ua = 'http://www.useragentstring.com/pages/useragentstring.php?name=All'
-  print('get ua list from web...')
   opener = spider_origin()
   body = opener.open(url_ua).read()
   soup = BeautifulSoup(body, 'html.parser')
@@ -63,7 +61,6 @@ def write_ua(filepath = r'./crawl_douban/spider_middleware/ua.txt'):
     file_obj = open(filepath, 'w')
     file_obj.write(ua_str)
     file_obj.close()
-    print('new UA write success...')
 
 def read_ua(filepath = r'./crawl_douban/spider_middleware/ua.txt'):
   """
@@ -77,6 +74,4 @@ def read_ua(filepath = r'./crawl_douban/spider_middleware/ua.txt'):
     file_obj.close()
     uas = ua_str.split('\n')
     ua = random.choice(uas)
-    print('new ua...')
-    print(ua)
     return ua

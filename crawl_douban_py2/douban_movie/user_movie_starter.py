@@ -42,8 +42,6 @@ def run(userid):
     write_user_movies(user_movies, userid)
     write_movies(movies)
     url_next = get_next(soup)
-    print('movies save success...')
-  print('all collect movies saved...')
   
   # do
   opener = spider_nologin()
@@ -63,8 +61,6 @@ def run(userid):
     write_user_movies(user_movies, userid)
     write_movies(movies)
     url_next = get_next(soup)
-    print('movies save success...')
-  print('all do movies saved...')
 
   # wish
   opener = spider_nologin()
@@ -84,5 +80,4 @@ def run(userid):
     write_user_movies(user_movies, userid)
     write_movies(movies)
     url_next = get_next(soup)
-    print('movies save success...')
-  print('all collect movies saved...')
+    

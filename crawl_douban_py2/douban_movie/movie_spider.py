@@ -32,7 +32,6 @@ class MovieSpider(object):
     @return soup  
     """
     opener, category_do = self.opener, self.category_do
-    print(category_do)
     body = spider_open(opener, category_do)
     soup = BeautifulSoup(body, 'html.parser')
     return soup
@@ -43,7 +42,6 @@ class MovieSpider(object):
     @return soup  
     """
     opener, category_wish = self.opener, self.category_wish
-    print(category_wish)
     body = spider_open(opener, category_wish)
     soup = BeautifulSoup(body, 'html.parser')
     return soup
@@ -54,7 +52,6 @@ class MovieSpider(object):
     @return soup  
     """
     opener, category_collect = self.opener, self.category_collect
-    print(category_collect)
     body = spider_open(opener, category_collect)
     soup = BeautifulSoup(body, 'html.parser')
     return soup

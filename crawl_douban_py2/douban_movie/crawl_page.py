@@ -70,7 +70,6 @@ def write_user_movies(user_movies, userid):
     file_obj = open(user_movie_file, 'a')
     file_obj.write(user_movie_str)
     file_obj.close()
-  print('%s user movies write success...' % (userid))
 
 def write_movies(movies, movie_file = r'./crawl_douban/douban_movie/movies.txt'):
   """
@@ -83,4 +82,3 @@ def write_movies(movies, movie_file = r'./crawl_douban/douban_movie/movies.txt')
     file_obj = open(movie_file, 'a')
     file_obj.write(movie_str)
     file_obj.close()
-  print('movies write success...')

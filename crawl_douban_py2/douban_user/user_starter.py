@@ -34,7 +34,6 @@ def run(userid):
   write_users(users, userid)
   write_userids(userids)
   alluser.extend(userids)
-  print('origin relation write ...')
   for userid in alluser:
     user = UserSpider(userid, opener)
     time.sleep(random.random())
@@ -47,5 +46,3 @@ def run(userid):
     users, userids = get_users(soup, relation)
     write_users(users, userid)
     write_userids(userids)
-    print('%s relation write ...' % userid)
-  print('all user relation write ...')

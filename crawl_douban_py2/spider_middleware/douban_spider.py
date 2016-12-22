@@ -9,10 +9,9 @@ __author__ = 'soonfy'
 import os
 import time
 
-from urllib import request
-from urllib.parse import urlencode
+from urllib2 import request
+from urllib2.parse import urlencode
 from http import cookiejar
-from urllib.request import URLError
 
 from spider_middleware.ua import read_ua
 
@@ -47,7 +46,6 @@ def spider_login():
   res = request.urlopen(req)
   body = res.read().decode('utf-8')
   FileCookieJar.save()
-  print('login spider success...')
   return opener
 
 def spider_nologin():
@@ -70,7 +68,6 @@ def spider_nologin():
   opener = request.build_opener(handler)
   request.install_opener(opener)
   opener.addheaders = headers
-  print('spider success...')
   return opener
 
 def spider_open(opener, url, timeout = 60 * 2, max = 10):
@@ -91,5 +88,5 @@ def spider_open(opener, url, timeout = 60 * 2, max = 10):
       return body
     except:
       fail += 1
-      print('=== time %s error, rest 10s ===' % fail)
+      print '=== time %s error, rest 10s ===' % fail
       time.sleep(1)

@@ -30,7 +30,6 @@ class UserSpider(object):
     @return soup, relation  
     """
     opener, contacts = self.opener, self.contacts
-    print(contacts)
     body = spider_open(opener, contacts)
     soup = BeautifulSoup(body, 'html.parser')
     return soup, 'contacts'
@@ -41,7 +40,6 @@ class UserSpider(object):
     @return soup, relation  
     """
     opener, rev_contacts = self.opener, self.rev_contacts
-    print(rev_contacts)
     body = spider_open(opener, rev_contacts)
     soup = BeautifulSoup(body, 'html.parser')
     return soup, 'rev_contacts'

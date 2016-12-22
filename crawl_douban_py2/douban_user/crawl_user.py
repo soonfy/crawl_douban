@@ -44,7 +44,6 @@ def write_users(users, userid, user_dir = r'./crawl_douban/douban_user/users'):
     file_obj = open(user_file, 'a')
     file_obj.write(user_str)
     file_obj.close()
-  print('users write success...')
 
 def write_userids(userids, userid_file = r'./crawl_douban/douban_user/users.txt'):
   """
@@ -57,4 +56,3 @@ def write_userids(userids, userid_file = r'./crawl_douban/douban_user/users.txt'
     file_obj = open(user_file, 'a')
     file_obj.write(userid_str)
     file_obj.close()
-    print('userids write success...')
