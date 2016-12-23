@@ -33,12 +33,14 @@ print ' ༺༻\t i m preparing.'
 log_bar(11)
 
 print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+print ' ༺༻\t firstly, update ua...'
 write_ua()
 print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
 print ' ༺༻\t i m tired.'
 log_bar(9)
 
 print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+print ' ༺༻\t secondly, crawl user contacts...'
 run_user(userid)
 print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 print ' ༺༻\t i m tired.'
@@ -48,8 +50,7 @@ print ' ༺༻\t thirdly, crawl user movies...'
 userfile = ('./data/douban_users/userids.txt')
 userids = open(userfile).read().split()
 userids = set(userids)
-concurrence(run_user_movie, userids)
-print ' ༺༻\t all users movies saved...'
+concurrence(run_user_movie, userids, 10)
 print ' ༺༻\t i m tired.'
 log_bar(61)
 
