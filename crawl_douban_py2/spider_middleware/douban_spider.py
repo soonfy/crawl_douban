@@ -29,8 +29,8 @@ def spider_login():
     "form_email": 'soonfy@163.com',
     "form_password": 'soonfy163',
     "login": '登录',
-    "captcha-id": "bAM4qTVQGPx6S0g7yxcCm404:en",
-    "captcha-solution": "present"
+    # "captcha-id": "bAM4qTVQGPx6S0g7yxcCm404:en",
+    # "captcha-solution": "present"
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
@@ -91,7 +91,7 @@ def spider_open(opener, url, timeout = 60 * 2, max = 10):
         return ''
       body = opener.open(url, None, timeout).read()
       return body
-    except:
+    except request.URLError:
       fail += 1
       print '=== time %s error, rest 10s ===' % fail
       time.sleep(10)

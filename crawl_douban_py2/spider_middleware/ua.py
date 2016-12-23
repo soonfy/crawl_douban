@@ -9,6 +9,7 @@ __author__ = 'soonfy'
 import os
 import random
 import time
+import socket
 
 import urllib2 as request
 from bs4 import BeautifulSoup
@@ -49,7 +50,7 @@ def origin_open(opener, url, timeout = 60 * 2, max = 10):
         return ''
       body = opener.open(url, None, timeout).read()
       return body
-    except:
+    except socket.error:
       print '=== time %s error, rest 10s ===' % fail
       fail += 1
       time.sleep(10)
