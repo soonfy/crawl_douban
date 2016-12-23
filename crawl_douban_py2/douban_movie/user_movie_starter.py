@@ -34,12 +34,17 @@ def run(userid):
   while url_next:
     time.sleep(random.random())
     opener = spider_nologin()
-    body = spider_open(opener, url_next)
-    soup = BeautifulSoup(body, 'html.parser')
-    user_movies, movies = get_movie(soup)
-    write_user_movies(user_movies, userid)
-    write_movies(movies)
-    url_next = get_next(soup)
+    body = None
+    try:
+      body = spider_open(opener, url_next)
+    except expression as identifier:
+      raise Exception('forbid error.')
+    else:
+      soup = BeautifulSoup(body, 'html.parser')
+      user_movies, movies = get_movie(soup)
+      write_user_movies(user_movies, userid)
+      write_movies(movies)
+      url_next = get_next(soup)
   
   # do
   opener = spider_nologin()
@@ -53,12 +58,16 @@ def run(userid):
   while url_next:
     time.sleep(random.random())
     opener = spider_nologin()
-    body = spider_open(opener, url_next)
-    soup = BeautifulSoup(body, 'html.parser')
-    user_movies, movies = get_movie(soup)
-    write_user_movies(user_movies, userid)
-    write_movies(movies)
-    url_next = get_next(soup)
+    try:
+      body = spider_open(opener, url_next)
+    except expression as identifier:
+      raise Exception('forbid error.')
+    else:
+      soup = BeautifulSoup(body, 'html.parser')
+      user_movies, movies = get_movie(soup)
+      write_user_movies(user_movies, userid)
+      write_movies(movies)
+      url_next = get_next(soup)
 
   # wish
   opener = spider_nologin()
@@ -72,10 +81,14 @@ def run(userid):
   while url_next:
     time.sleep(random.random())
     opener = spider_nologin()
-    body = spider_open(opener, url_next)
-    soup = BeautifulSoup(body, 'html.parser')
-    user_movies, movies = get_movie(soup)
-    write_user_movies(user_movies, userid)
-    write_movies(movies)
-    url_next = get_next(soup)
+    try:
+      body = spider_open(opener, url_next)
+    except expression as identifier:
+      raise Exception('forbid error.')
+    else:
+      soup = BeautifulSoup(body, 'html.parser')
+      user_movies, movies = get_movie(soup)
+      write_user_movies(user_movies, userid)
+      write_movies(movies)
+      url_next = get_next(soup)
     

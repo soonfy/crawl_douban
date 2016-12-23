@@ -94,8 +94,8 @@ def spider_open(opener, url, timeout = 60 * 2, max = 10):
   while True:
     try:
       if fail > max:
-        print ' ༺༻\t he not like u...'
-        sys.exit()
+        print ' ༺༻\t spider not like u...'
+        raise Exception('forbid error.')
       body = opener.open(url, None, timeout).read()
       return body
     except request.URLError:

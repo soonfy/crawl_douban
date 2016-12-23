@@ -22,6 +22,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+
 userid = raw_input(' ༺༻\t who do u like ? \n ༺༻\t    55692656 or https://www.douban.com/people/rakikikikiki/ \n ༺༻\t ණ  ')
 if 'www.douban.com' in userid:
   m = re.search(r'www.douban.com/people/(\w+)/', userid)
@@ -32,10 +33,10 @@ print ' ༺༻\t ඏ https://www.douban.com/people/%s/ ඏ who is this...' % use
 print ' ༺༻\t i m preparing.'
 log_bar(11)
 
-print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 print ' ༺༻\t firstly, update ua...'
 write_ua()
-print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 print ' ༺༻\t i m tired.'
 log_bar(9)
 
@@ -47,10 +48,16 @@ print ' ༺༻\t i m tired.'
 log_bar(59)
 
 print ' ༺༻\t thirdly, crawl user movies...'
+print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 userfile = ('./data/douban_users/userids.txt')
 userids = open(userfile).read().split()
 userids = set(userids)
-concurrence(run_user_movie, userids, 10)
+try:
+  concurrence(run_user_movie, userids, 10)
+except:
+  print ' ༺༻\t catch the raised error...'
+  sys.exit()
+print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 print ' ༺༻\t i m tired.'
 log_bar(61)
 
