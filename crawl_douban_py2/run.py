@@ -16,10 +16,11 @@ from douban_movie.user_movie_starter import run as run_user_movie
 from util.thread_sf import concurrence
 from util.progress import log_bar
 
+# UnicodeEncodeError: 'ascii' codec can't encode characters in position
 # sys encode
-# import sys
-# reload(sys)
-# sys.setdefaultencoding('utf8')
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 print '>> spider ready, go...\n'
 userid = raw_input('>> input douban userid or userurl: \n ex: \n    155042704 or https://www.douban.com/people/rakikikikiki/ \n==> ')
