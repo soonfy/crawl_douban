@@ -30,8 +30,8 @@ def spider_login():
     'form_email': 'soonfy@163.com',
     'form_password': 'soonfy163',
     'login': '登录',
-    # 'captcha-id': 'Zg5kLs3RHPVUdhcLS30Tqbbl:en',
-    # 'captcha-solution': 'credit'
+    # 'captcha-id': 'TqpZLxJyLAFWZXATpb637tDR:en',
+    # 'captcha-solution': 'broken'
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
@@ -54,7 +54,7 @@ def spider_login():
     body = res.read().decode('utf-8')
     if u'验证码不正确' in body:
       print body
-      print '>> **login error, need input captcha-id and captcha-solution...'
+      print ' ༺༻\t login error, need input captcha-id and captcha-solution...'
       sys.exit()
     FileCookieJar.save()
     return opener
@@ -94,10 +94,12 @@ def spider_open(opener, url, timeout = 60 * 2, max = 10):
   while True:
     try:
       if fail > max:
-        return ''
+        print ' ༺༻\t he not like u...'
+        sys.exit()
       body = opener.open(url, None, timeout).read()
       return body
     except request.URLError:
-      fail += 1
+      print url
       print '=== time %s error, rest 10s ===' % fail
+      fail += 1
       time.sleep(10)

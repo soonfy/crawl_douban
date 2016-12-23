@@ -22,36 +22,36 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-print '>> spider ready, go...\n'
-userid = raw_input('>> input douban userid or userurl: \n ex: \n    55692656 or https://www.douban.com/people/rakikikikiki/ \n==> ')
+print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+userid = raw_input(' ༺༻\t who do u like ? \n ༺༻\t    55692656 or https://www.douban.com/people/rakikikikiki/ \n ༺༻\t ණ  ')
 if 'www.douban.com' in userid:
   m = re.search(r'www.douban.com/people/(\w+)/', userid)
   if m:
     userid = m.group(1)
-print '>> you want to crawl douban user %s' % userid
-print '>> open [ https://www.douban.com/people/%s/ ] to view data...\n' % userid
-print '==> 10s start crawl...\n'
-log_bar(10)
+print ' ༺༻\t oh, you like %s' % userid
+print ' ༺༻\t ඏ https://www.douban.com/people/%s/ ඏ who is this...' % userid
+print ' ༺༻\t i m preparing.'
+log_bar(11)
 
-print '==> firstly, update ua...'
+print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
 write_ua()
-print '==> ua update over...\n'
-print '==> rest 10s...\n'
-log_bar(10)
+print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+print ' ༺༻\t i m tired.'
+log_bar(9)
 
-print '==> secondly, login and crawl user contacts...'
+print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 run_user(userid)
-print '==> all user contacts over...'
-print '==> rest 1 min...\n'
-log_bar(60)
+print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+print ' ༺༻\t i m tired.'
+log_bar(59)
 
-print '==> thirdly, crawl user movies...'
+print ' ༺༻\t thirdly, crawl user movies...'
 userfile = ('./data/douban_users/userids.txt')
 userids = open(userfile).read().split()
 userids = set(userids)
 concurrence(run_user_movie, userids)
-print '==> all users movies saved...'
-print '==> rest 1 min...\n'
-log_bar(60)
+print ' ༺༻\t all users movies saved...'
+print ' ༺༻\t i m tired.'
+log_bar(61)
 
-print '>> spider over...\n'
+print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'

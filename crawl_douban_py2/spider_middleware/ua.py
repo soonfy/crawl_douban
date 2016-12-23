@@ -51,6 +51,7 @@ def origin_open(opener, url, timeout = 60 * 2, max = 10):
       body = opener.open(url, None, timeout).read()
       return body
     except socket.error:
+      print url
       print '=== time %s error, rest 10s ===' % fail
       fail += 1
       time.sleep(10)
