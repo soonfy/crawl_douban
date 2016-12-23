@@ -27,7 +27,8 @@ sys.setdefaultencoding('utf8')
 print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
 
 log_bar(9)
+print ' ༺༻\t prepare to update ua...'
 write_ua()
 log_bar(19)
-
+print ' ༺༻\t update ua over...'
 print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'

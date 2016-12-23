@@ -14,3 +14,4 @@ def log_bar(amount):
     sys.stdout.write(' ༺༻\t ' + 'ෆ ' * (counter + 1) + ' %.2f' % (float(counter + 1) / amount * 100) + '%' + '\r')
     sys.stdout.flush()
     time.sleep(1)
+  print 

@@ -33,12 +33,12 @@ print ' ༺༻\t ඏ https://www.douban.com/people/%s/ ඏ who is this...' % use
 print ' ༺༻\t i m preparing.'
 log_bar(11)
 
-print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
-print ' ༺༻\t firstly, update ua...'
-write_ua()
-print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
-print ' ༺༻\t i m tired.'
-log_bar(9)
+# print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+# print ' ༺༻\t firstly, update ua...'
+# write_ua()
+# print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+# print ' ༺༻\t i m tired.'
+# log_bar(9)
 
 print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
 print ' ༺༻\t secondly, crawl user contacts...'
