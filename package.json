@@ -6,6 +6,7 @@
   "scripts": {
     "test": "python demo.py",
     "start": "python main.py",
+    "prepare": "python crawl_douban_py2/prepare.py",
     "spider2": "python crawl_douban_py2/run.py",
     "spider3": "python3 crawl_douban_py3/run.py"
   },

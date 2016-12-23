@@ -35,8 +35,8 @@ def spider_login():
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
-    # 'User-Agent': read_ua(),
-    'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16',
+    'User-Agent': read_ua(),
+    # 'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Referer': 'https://www.douban.com',
     'Host': 'www.douban.com',

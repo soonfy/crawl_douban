@@ -6,7 +6,6 @@
 __author__ = 'soonfy'
 
 # modules
-import time
 import sys
 import re
 
