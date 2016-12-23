@@ -23,7 +23,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 print '>> spider ready, go...\n'
-userid = raw_input('>> input douban userid or userurl: \n ex: \n    155042704 or https://www.douban.com/people/rakikikikiki/ \n==> ')
+userid = raw_input('>> input douban userid or userurl: \n ex: \n    55692656 or https://www.douban.com/people/rakikikikiki/ \n==> ')
 if 'www.douban.com' in userid:
   m = re.search(r'www.douban.com/people/(\w+)/', userid)
   if m:

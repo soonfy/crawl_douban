@@ -8,6 +8,7 @@ __author__ = 'soonfy'
 # modules
 import os
 import time
+import sys
 
 import urllib2 as request
 import urllib
@@ -24,17 +25,18 @@ def spider_login():
   """
   url_login = 'https://www.douban.com/accounts/login'
   param = {
-    "source": 'None',
-    "redir": 'https://www.douban.com/people/rakikikikiki/contacts',
-    "form_email": 'soonfy@163.com',
-    "form_password": 'soonfy163',
-    "login": '登录',
-    # "captcha-id": "bAM4qTVQGPx6S0g7yxcCm404:en",
-    # "captcha-solution": "present"
+    'source': 'None',
+    'redir': 'https://www.douban.com/people/rakikikikiki/contacts',
+    'form_email': 'soonfy@163.com',
+    'form_password': 'soonfy163',
+    'login': '登录',
+    # 'captcha-id': 'Zg5kLs3RHPVUdhcLS30Tqbbl:en',
+    # 'captcha-solution': 'credit'
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
-    'User-Agent': read_ua(),
+    # 'User-Agent': read_ua(),
+    'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Referer': 'https://www.douban.com',
     'Host': 'www.douban.com',
@@ -50,6 +52,10 @@ def spider_login():
     request.install_opener(opener)
     res = request.urlopen(req)
     body = res.read().decode('utf-8')
+    if u'验证码不正确' in body:
+      print body
+      print '>> **login error, need input captcha-id and captcha-solution...'
+      sys.exit()
     FileCookieJar.save()
     return opener
 
