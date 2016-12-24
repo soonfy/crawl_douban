@@ -19,7 +19,7 @@ from spider_middleware.ua import write_ua
 from util.progress import log_bar
 
 def ua_ready():
-  userid = raw_input(' ༺༻\t who do u like ? \n ༺༻\t    55692656 or https://www.douban.com/people/rakikikikiki/ \n ༺༻\t ණ  ')
+  userid = raw_input(' ༺༻\t who do u like ? \n ༺༻\t    155042704 or https://www.douban.com/people/155042704/ \n ༺༻\t ණ  ')
   if 'www.douban.com' in userid:
     m = re.search(r'www.douban.com/people/(\w+)/', userid)
     if m:

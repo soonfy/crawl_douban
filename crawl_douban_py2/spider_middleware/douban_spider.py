@@ -29,8 +29,8 @@ def spider_login():
     'form_email': 'soonfy@163.com',
     'form_password': 'soonfy163',
     'login': '登录',
-    # 'captcha-id': 'hJF6JI8H8R4zLi2XCUAKeETP:en',
-    # 'captcha-solution': 'error'
+    # 'captcha-id': '4i2RhXU309F8uzBINza2zofA:en',
+    # 'captcha-solution': 'tomorrow'
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
