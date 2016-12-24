@@ -15,7 +15,6 @@ import urllib
 import cookielib as cookiejar
 
 from util.fs import file_ready
-
 from spider_middleware.ua import read_ua
 
 def spider_login():
@@ -30,13 +29,13 @@ def spider_login():
     'form_email': 'soonfy@163.com',
     'form_password': 'soonfy163',
     'login': '登录',
-    # 'captcha-id': 'TqpZLxJyLAFWZXATpb637tDR:en',
-    # 'captcha-solution': 'broken'
+    # 'captcha-id': 'hJF6JI8H8R4zLi2XCUAKeETP:en',
+    # 'captcha-solution': 'error'
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
-    'User-Agent': read_ua(),
-    # 'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16',
+    # 'User-Agent': read_ua(),
+    'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Referer': 'https://www.douban.com',
     'Host': 'www.douban.com',

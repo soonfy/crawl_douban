@@ -18,17 +18,20 @@ import sys
 from spider_middleware.ua import write_ua
 from util.progress import log_bar
 
-# UnicodeEncodeError: 'ascii' codec can't encode characters in position
-# sys encode
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-
-print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
-
-log_bar(9)
-print ' ༺༻\t prepare to update ua...'
-write_ua()
-log_bar(19)
-print ' ༺༻\t update ua over...'
-print ' ༺༻\t ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ ൠ'
+def ua_ready():
+  userid = raw_input(' ༺༻\t who do u like ? \n ༺༻\t    55692656 or https://www.douban.com/people/rakikikikiki/ \n ༺༻\t ණ  ')
+  if 'www.douban.com' in userid:
+    m = re.search(r'www.douban.com/people/(\w+)/', userid)
+    if m:
+      userid = m.group(1)
+  print ' ༺༻\t oh, you like %s' % userid
+  print ' ༺༻\t ඏ https://www.douban.com/people/%s/ ඏ who is this...' % userid
+  print ' ༺༻\t i m preparing.'
+  print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+  log_bar(9)
+  print ' ༺༻\t prepare to update ua...'
+  write_ua()
+  log_bar(11)
+  print ' ༺༻\t update ua over...'
+  print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+  return userid

@@ -4,7 +4,7 @@
   "description": "crawl douban using py3 or py2",
   "main": "main.py",
   "scripts": {
-    "test": "python demo.py",
+    "test": "python crawl_douban_py2/run_demo.py",
     "start": "python main.py",
     "prepare": "python crawl_douban_py2/prepare.py",
     "spider2": "python crawl_douban_py2/run.py",
