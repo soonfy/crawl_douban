@@ -25,7 +25,7 @@ def ua_ready():
     if m:
       userid = m.group(1)
   print ' ༺༻\t oh, you like %s' % userid
-  print ' ༺༻\t ඏ https://www.douban.com/people/%s/ ඏ who is this...' % userid
+  print ' ༺༻\t ඏ  https://www.douban.com/people/%s/ ඏ  who is this...' % userid
   print ' ༺༻\t i m preparing.'
   print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
   log_bar(9)
