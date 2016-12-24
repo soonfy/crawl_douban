@@ -7,6 +7,7 @@ __author__ = 'soonfy'
 
 # modules
 import sys
+import time
 
 from douban_user.user_starter import run as run_user
 from douban_movie.user_movie_starter import run as run_user_movie
@@ -24,12 +25,34 @@ def crawl_user(userid):
   print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
   print ' ༺༻\t thirdly, crawl user movies...'
   userfile = ('./data/douban_users/userids.txt')
-  userids = open(userfile).read().split()
-  userids = set(userids)
+  all_userids = open(userfile).read().split()
+  amount = len(all_userids)
+  step = counter = 4000
+  part = all_userids[0:counter]
+  print part
+  userids = set(part)
   try:
-    concurrence(run_user_movie, userids, 10)
+    concurrence(run_user_movie, userids)
   except:
     print ' ༺༻\t catch the raised error...'
     sys.exit()
   print ' ༺༻\t i m tired.'
+  print ' ༺༻\t i want sleep 2h.'
   print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+  time.sleep(60 * 60 * 2)
+  log_bar(59)
+
+  while counter < amount:
+    part = all_userids[counter:counter + step]
+    userids = set(part)
+    try:
+      concurrence(run_user_movie, userids)
+    except:
+      print ' ༺༻\t catch the raised error...'
+      sys.exit()
+    counter = counter + step
+    print ' ༺༻\t i m tired.'
+    print ' ༺༻\t i want sleep 2h.'
+    print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+    time.sleep(60 * 60 * 2)
+    log_bar(59)

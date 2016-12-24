@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from spider_middleware.douban_spider import spider_nologin, spider_open
 from douban_movie.movie_spider import MovieSpider
 from douban_movie.crawl_page import get_movie, get_next, write_user_movies, write_movies
+from util.fs import file_ready
 
 def run(userid):
   """
@@ -37,7 +38,7 @@ def run(userid):
     body = None
     try:
       body = spider_open(opener, url_next)
-    except expression as identifier:
+    except:
       raise Exception('forbid error.')
     else:
       soup = BeautifulSoup(body, 'html.parser')
@@ -60,7 +61,7 @@ def run(userid):
     opener = spider_nologin()
     try:
       body = spider_open(opener, url_next)
-    except expression as identifier:
+    except:
       raise Exception('forbid error.')
     else:
       soup = BeautifulSoup(body, 'html.parser')
@@ -83,7 +84,7 @@ def run(userid):
     opener = spider_nologin()
     try:
       body = spider_open(opener, url_next)
-    except expression as identifier:
+    except:
       raise Exception('forbid error.')
     else:
       soup = BeautifulSoup(body, 'html.parser')
@@ -91,4 +92,11 @@ def run(userid):
       write_user_movies(user_movies, userid)
       write_movies(movies)
       url_next = get_next(soup)
-    
+  
+  # write crawled userid
+  filepath = './douban_users/userids_crawled.txt'
+  if file_ready(filepath):
+    userided = userid + '\n'
+    file_obj = open(filepath, 'a')
+    file_obj.write(userided)
+    file_obj.close()

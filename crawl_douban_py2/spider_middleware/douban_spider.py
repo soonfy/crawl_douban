@@ -22,6 +22,11 @@ def spider_login():
   login douban spider  
   @return opener  
   """
+  ua = read_ua()
+  if ua:
+    pass
+  else:
+    ua = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16'
   url_login = 'https://www.douban.com/accounts/login'
   param = {
     'source': 'None',
@@ -29,13 +34,12 @@ def spider_login():
     'form_email': 'soonfy@163.com',
     'form_password': 'soonfy163',
     'login': '登录',
-    # 'captcha-id': '4i2RhXU309F8uzBINza2zofA:en',
-    # 'captcha-solution': 'tomorrow'
+    # 'captcha-id': 'twO0UmGPzATj0bF4Cf0pTD1c:en',
+    # 'captcha-solution': 'young'
   }
   data = urllib.urlencode(param).encode('utf-8')
   headers = {
-    # 'User-Agent': read_ua(),
-    'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16',
+    'User-Agent': ua,
     'Content-Type': 'application/x-www-form-urlencoded',
     'Referer': 'https://www.douban.com',
     'Host': 'www.douban.com',
@@ -54,6 +58,7 @@ def spider_login():
     if u'验证码不正确' in body:
       print body
       print ' ༺༻\t login error, need input captcha-id and captcha-solution...'
+      print ' ༺༻\t '
       sys.exit()
     FileCookieJar.save()
     return opener
@@ -63,8 +68,13 @@ def spider_nologin():
   nologin douban spider  
   @return opener  
   """
+  ua = read_ua()
+  if ua:
+    pass
+  else:
+    ua = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16'
   header = {
-    'User-Agent': read_ua(),
+    'User-Agent': ua,
     'Referer': 'https://www.douban.com/',
     'Host': 'www.douban.com',
     'Origin': 'https://www.douban.com'
