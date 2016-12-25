@@ -24,7 +24,7 @@ class ThreadS (threading.Thread):
     self.func(self.args)
     threadLock.release()
 
-def concurrence(func, arr, amount = 50):
+def concurrence(func, arr, amount = 10):
   """
   thread concurrence  
   @param func  

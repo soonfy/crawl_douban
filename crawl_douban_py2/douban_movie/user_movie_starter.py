@@ -21,7 +21,6 @@ def run(userid):
   start run crawl user-movies  
   @param userid  
   """
-  time.sleep(random.choice(range(10)))
   
   # collect
   opener = spider_nologin()
@@ -94,7 +93,7 @@ def run(userid):
       url_next = get_next(soup)
   
   # write crawled userid
-  filepath = './douban_users/userids_crawled.txt'
+  filepath = './data/douban_users/userids_crawled.txt'
   if file_ready(filepath):
     userided = userid + '\n'
     file_obj = open(filepath, 'a')

@@ -5,11 +5,10 @@
 
 __author__ = 'soonfy'
 
-num = 2
-arr = range(20)
+import urllib2
 
-print arr[0:num]
-while num <= 20:
-  print arr[num:num+2]
-  num = num + 2
-print 'ok'
+proxy=urllib2.ProxyHandler({'https': 'http://221.195.40.145:80'})
+opener=urllib2.build_opener(proxy)
+urllib2.install_opener(opener)
+body = urllib2.urlopen('https://www.douban.com').read().decode('utf-8')
+print body

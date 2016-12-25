@@ -27,6 +27,7 @@ def spider_login():
     pass
   else:
     ua = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16'
+  print ua
   url_login = 'https://www.douban.com/accounts/login'
   param = {
     'source': 'None',
@@ -88,6 +89,7 @@ def spider_nologin():
   opener = request.build_opener(handler)
   request.install_opener(opener)
   opener.addheaders = headers
+  opener.open('https://www.douban.com/')
   return opener
 
 def spider_open(opener, url, timeout = 60 * 2, max = 10):
@@ -107,8 +109,10 @@ def spider_open(opener, url, timeout = 60 * 2, max = 10):
         raise Exception('forbid error.')
       body = opener.open(url, None, timeout).read()
       return body
-    except request.URLError:
+    except request.URLError as e:
+      print e
       print url
       print '=== time %s error, rest 10s ===' % fail
       fail += 1
+      opener = spider_nologin()
       time.sleep(10)
