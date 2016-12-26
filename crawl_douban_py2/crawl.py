@@ -8,6 +8,7 @@ __author__ = 'soonfy'
 # modules
 import sys
 import time
+import random
 
 from douban_user.user_starter import run as run_user
 from douban_movie.user_movie_starter import run as run_user_movie
@@ -34,36 +35,18 @@ def crawl_user(userid):
     file_obj = open(distfile, 'w')
     file_obj.write(userid_str)
     file_obj.close()
-  amount = len(all_userids)
-  step = counter = 100
-  timeout = 60 * 60 * 1
-  part = all_userids[0:counter]
-  print part
-  userids = set(part)
+  timeout = 60 * random.choice(range(1, 30))
   try:
     # concurrence(run_user_movie, userids)
-    for userid in userids:
+    for userid in all_userids:
       run_user_movie(userid)
+      print ' ༺༻\t i m tired. i want sleep %s.' % timeout
+      time.sleep(timeout)
+      print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+      log_bar(59)
   except:
     print ' ༺༻\t catch the raised error...'
     sys.exit()
   print ' ༺༻\t i m tired.'
   print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
   log_bar(59)
-
-  while counter < amount:
-    print ' ༺༻\t i want sleep %s.' % timeout
-    time.sleep(timeout)
-    part = all_userids[counter:counter + step]
-    userids = set(part)
-    try:
-      # concurrence(run_user_movie, userids)
-      for userid in userids:
-        run_user_movie(userid)
-    except:
-      print ' ༺༻\t catch the raised error...'
-      sys.exit()
-    counter = counter + step
-    print ' ༺༻\t i m tired.'
-    print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
-    log_bar(59)
