@@ -9,6 +9,7 @@ __author__ = 'soonfy'
 import os
 import time
 import sys
+# import json
 
 import urllib2 as request
 import urllib
@@ -29,6 +30,9 @@ def spider_login():
     ua = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.134 Safari/534.16'
   print ua
   url_login = 'https://www.douban.com/accounts/login'
+  # fd = open('./login.json', 'r')
+  # param = json.loads(fd.read())
+  # print param
   param = {
     'source': 'None',
     'redir': 'https://www.douban.com/people/rakikikikiki/contacts',
