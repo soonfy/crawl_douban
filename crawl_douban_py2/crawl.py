@@ -40,6 +40,7 @@ def crawl_user(userid):
     # concurrence(run_user_movie, userids)
     for userid in all_userids:
       run_user_movie(userid)
+      print 'userid %s crawl over.' % userid
       print ' ༺༻\t i m tired. i want sleep %s.' % timeout
       time.sleep(timeout)
       print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
