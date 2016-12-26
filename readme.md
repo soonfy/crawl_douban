@@ -14,3 +14,9 @@
   ```
   python crawl_douban_py2/run.py
   ```
+
+  * progress  
+  > 1. crawl user contacts and rev_contacts => users  
+  > 2. crawl users contacts and rev_contacts => all_users  
+  > 3. crawl all_users do/wish/collect movie => user-movies  
+  
