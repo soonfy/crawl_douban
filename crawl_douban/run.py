@@ -6,9 +6,12 @@
 __author__ = 'soonfy'
 
 from spider import spider_douban
+from parser import parse_people
 
 spd = spider_douban()
-mt = spd.parse_params('https://music.douban.com/people/xzyzsk7/collect')
+mt = spd.parse_params('https://www.douban.com/people/xzyzsk7/')
 print(mt)
 for v in mt:
   print(v)
+
+parse_people(mt, 'all')
