@@ -8,7 +8,7 @@ __author__ = 'soonfy'
 from spider import spider_douban
 
 spd = spider_douban()
-mt = spd.crawl('https://music.douban.com/people/xzyzsk7/collect')
+mt = spd.parse_params('https://music.douban.com/people/xzyzsk7/collect')
 print(mt)
 for v in mt:
   print(v)

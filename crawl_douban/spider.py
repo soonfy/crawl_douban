@@ -8,6 +8,8 @@ __author__ = 'soonfy'
 # modules
 import re
 
+from bs4 import BeautifulSoup
+
 from opener import opener_nologin, opener_login
 
 class spider_douban(object):
@@ -31,15 +33,21 @@ class spider_douban(object):
     else:
       self.opener = opener_nologin()
 
-  def crawl(self, url):
-    for _reg in self.__reg_urls:
+  def parse_params(self, url):
+    body = spider_open(self.opener, url)
+    soup = BeautifulSoup(body, 'html')
+    res = [url, soup]
+    for index, _reg in enumerate(self.__reg_urls):
       _mt = re.search(_reg, url)
       if _mt:
         print(_reg)
-        return _mt.groups()
+        res.append(index)
+        for data in _mt.groups():
+          res.append(data)
+        break
       else:
         continue
-    return ()
+    return res
 
 # https://www.douban.com/people/xzyzsk7/
 

@@ -5,3 +5,7 @@
 
 __author__ = 'soonfy'
 
+def parse_people(opener, arr):
+  print opener
+  print arr
+  

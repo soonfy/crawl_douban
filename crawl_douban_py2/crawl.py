@@ -35,13 +35,13 @@ def crawl_user(userid):
     file_obj = open(distfile, 'w')
     file_obj.write(userid_str)
     file_obj.close()
-  timeout = 60 * random.choice(range(1, 30))
+  timeout = 10 * random.choice(range(1, 60))
   try:
     # concurrence(run_user_movie, userids)
-    for userid in all_userids:
+    for index, userid in enumerate(all_userids):
       run_user_movie(userid)
-      print 'userid %s crawl over.' % userid
-      print ' ༺༻\t i m tired. i want sleep %s.' % timeout
+      print '--%s-- userid %s crawl over.' % (index, userid)
+      print ' ༺༻\t i m tired. i want sleep %ss.' % timeout
       time.sleep(timeout)
       print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
       log_bar(59)
