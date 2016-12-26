@@ -36,7 +36,7 @@ def crawl_user(userid):
     file_obj.close()
   amount = len(all_userids)
   step = counter = 100
-  timeout = 60 * 60 * 2
+  timeout = 60 * 60 * 1
   part = all_userids[0:counter]
   print part
   userids = set(part)
