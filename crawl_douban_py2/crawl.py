@@ -35,17 +35,29 @@ def crawl_user(userid):
     file_obj = open(distfile, 'w')
     file_obj.write(userid_str)
     file_obj.close()
-  timeout = 10 * random.choice(range(1, 60))
   try:
-    # concurrence(run_user_movie, userids)
+    # concurrence(run_user_movie, all_userids)
+    amount = len(all_userids)
     for index, userid in enumerate(all_userids):
-      run_user_movie(userid)
-      print '--%s-- userid %s crawl over.' % (index, userid)
-      print ' ༺༻\t i m tired. i want sleep %ss.' % timeout
-      time.sleep(timeout)
-      print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
-      log_bar(59)
-  except:
+      try:
+        run_user_movie(userid)
+      except Exception as e:
+        print e
+        print ' ༺༻\t catch the raised error...'
+        errorfile = './data/douban_users/userids_error.txt'
+        if file_ready(errorfile):
+          userid_str = userid + '\n'
+          file_obj = open(errorfile, 'a')
+          file_obj.write(userid_str)
+          file_obj.close()
+        print ' ༺༻\t i m tired. i want sleep 2h.'
+        time.sleep(60 * 60 * 2)
+        run_user_movie(userid)
+      else:
+        print '--%s-- userid %s crawl over. all --%s--' % (index + 1, userid, amount)
+        print ' ༺༻\t ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛ ๛'
+  except Exception as e:
+    print e
     print ' ༺༻\t catch the raised error...'
     sys.exit()
   print ' ༺༻\t i m tired.'

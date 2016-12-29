@@ -6,7 +6,6 @@
 __author__ = 'soonfy'
 
 # modules
-import time
 import random
 
 from bs4 import BeautifulSoup
@@ -24,7 +23,6 @@ def run(userid):
   
   # collect
   opener = spider_nologin()
-  time.sleep(random.random())
   movie_spider = MovieSpider(userid, opener)
   soup = movie_spider.crawl_collect()
   user_movies, movies = get_movie(soup)
@@ -32,7 +30,6 @@ def run(userid):
   write_movies(movies)
   url_next = get_next(soup)
   while url_next:
-    time.sleep(random.random())
     opener = spider_nologin()
     body = None
     try:
@@ -48,7 +45,6 @@ def run(userid):
   
   # do
   opener = spider_nologin()
-  time.sleep(random.random())
   movie_spider = MovieSpider(userid, opener)
   soup = movie_spider.crawl_do()
   user_movies, movies = get_movie(soup)
@@ -56,7 +52,6 @@ def run(userid):
   write_movies(movies)
   url_next = get_next(soup)
   while url_next:
-    time.sleep(random.random())
     opener = spider_nologin()
     try:
       body = spider_open(opener, url_next)
@@ -71,7 +66,6 @@ def run(userid):
 
   # wish
   opener = spider_nologin()
-  time.sleep(random.random())
   movie_spider = MovieSpider(userid, opener)
   soup = movie_spider.crawl_wish()
   user_movies, movies = get_movie(soup)
@@ -79,7 +73,6 @@ def run(userid):
   write_movies(movies)
   url_next = get_next(soup)
   while url_next:
-    time.sleep(random.random())
     opener = spider_nologin()
     try:
       body = spider_open(opener, url_next)
